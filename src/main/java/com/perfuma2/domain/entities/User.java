@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_")
 @Getter @Setter
 public class User {
 
@@ -20,6 +20,15 @@ public class User {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @Column(name = "password")
+    private String password;
+
+    @OneToOne
+    private Location location;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)  // La clave foránea está en la entidad Parfum
     private List<Parfum> parfums;

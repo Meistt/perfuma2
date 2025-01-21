@@ -32,5 +32,8 @@ public class Post {
     @Column(name = "active_post")
     private Boolean activePost;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
 
 }
