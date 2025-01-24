@@ -19,6 +19,10 @@ public class UserDTO {
     private String lastName;
 
     @NotNull
+    @JsonProperty("email")
+    private String email;
+
+    @NotNull
     @JsonProperty("userName")
     private String userName;
 

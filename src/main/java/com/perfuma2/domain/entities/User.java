@@ -21,13 +21,17 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "user_name")
     private String userName;
 
     @Column(name = "password")
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)  // La clave foránea está en la entidad Parfum
