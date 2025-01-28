@@ -65,12 +65,17 @@ public class UserServiceImpl implements UserService {
     }
 
     private User getUserByEmail(String email) {
-        return this.repository.findeByEmail(email);
+        return this.repository.findByEmail(email);
     }
 
     @Override
-    public HttpStatus deleteUser(UserDTO user) {
-        return null;
+    public RestResponse deleteUser(String email) throws DomainException {
+        User user = this.getUserByEmail(email);
+        if (user == null){
+            throw new DomainException(HttpStatus.NOT_FOUND, "User " + email + " Not found.");
+        }
+        this.repository.delete(user);
+        return new RestResponse(HttpStatus.OK, "User deleted succefully.");
     }
 
     @Override

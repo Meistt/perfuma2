@@ -8,6 +8,6 @@ import org.springframework.http.HttpStatus;
 public interface UserService {
     public HttpStatus createUser(UserDTO user);
     public RestResponse updateUser(UserDTO user) throws DomainException;
-    public HttpStatus deleteUser(UserDTO user);
+    public RestResponse deleteUser(String email) throws DomainException;
     public String encodePassword(String pass);
 }
