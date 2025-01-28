@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
         user.setName(dto.getName());
         user.setLastName(dto.getLastName());
         user.setUserName(dto.getUserName());
+        user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
         user.setLocation(dto.getLocation());
         Location location = dto.getLocation();
