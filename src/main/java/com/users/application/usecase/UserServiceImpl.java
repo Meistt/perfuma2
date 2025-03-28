@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
         user.setName(dto.getName());
         user.setLastName(dto.getLastName());
         user.setUserName(dto.getUserName());
+        user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
         user.setLocation(dto.getLocation());
         Location location = dto.getLocation();
@@ -69,8 +70,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public HttpStatus deleteUser(UserDTO user) {
-        return null;
+    public RestResponse deleteUser(String email) throws DomainException {
+        User user = this.getUserByEmail(email);
+        if (user == null){
+            throw new DomainException(HttpStatus.NOT_FOUND, "User " + email + " Not found.");
+        }
+        this.repository.delete(user);
+        return new RestResponse(HttpStatus.OK, "User deleted succefully.");
     }
 
     @Override

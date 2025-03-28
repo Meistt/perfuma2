@@ -27,10 +27,20 @@ public class UserController {
         return new ResponseEntity<>("Usuario creado con éxito", code);
     }
 
-    @PostMapping
+    @PutMapping
     public ResponseEntity<RestResponse> updateUser(@RequestBody UserDTO user) throws DomainException {
         RestResponse response = this.service.updateUser(user);
         return new ResponseEntity<>(response, response.getStatusCode());
 
+    }
+
+    @DeleteMapping("/delete-user")
+    public ResponseEntity<RestResponse> deleteUser(String email) throws DomainException {
+        RestResponse response = this.service.deleteUser(email);
+
+
+
+
+        return null;
     }
 }
