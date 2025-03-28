@@ -8,12 +8,12 @@
         <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.project</groupId>
-    <artifactId>perfuma2</artifactId>
+    <groupId>com.agustin.users</groupId>
+    <artifactId>users-microservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>perfuma2</name>
-    <description>perfuma2</description>
+    <name>users-microservice</name>
+    <description>users-microservice</description>
     <url/>
     <licenses>
         <license/>
