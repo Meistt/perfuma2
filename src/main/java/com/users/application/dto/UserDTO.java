@@ -1,7 +1,7 @@
-package com.users.interfaces.dto;
+package com.users.application.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.users.domain.entities.Location;
+import com.users.domain.models.Location;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;

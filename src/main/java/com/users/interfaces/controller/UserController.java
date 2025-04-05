@@ -2,7 +2,7 @@ package com.users.interfaces.controller;
 
 import com.users.domain.exception.DomainException;
 import com.users.domain.services.UserService;
-import com.users.interfaces.dto.UserDTO;
+import com.users.application.dto.UserDTO;
 import com.users.interfaces.rest.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class UserController {
         return "HOLA LLEGUÉ";
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<String> createUser(@RequestBody UserDTO user){
         HttpStatus code = this.service.createUser(user);
         return new ResponseEntity<>("Usuario creado con éxito", code);
@@ -37,9 +37,6 @@ public class UserController {
     @DeleteMapping("/delete-user")
     public ResponseEntity<RestResponse> deleteUser(String email) throws DomainException {
         RestResponse response = this.service.deleteUser(email);
-
-
-
 
         return null;
     }

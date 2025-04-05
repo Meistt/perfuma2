@@ -1,15 +1,16 @@
-package com.users.application.usecase;
+package com.users.application.service;
 
-import com.users.domain.entities.Location;
-import com.users.domain.entities.User;
+import com.users.domain.models.Location;
+import com.users.domain.models.User;
 import com.users.domain.exception.DomainException;
 import com.users.domain.services.UserService;
 import com.users.infrastructure.persistence.UserRepository;
-import com.users.interfaces.dto.UserDTO;
+import com.users.application.dto.UserDTO;
 import com.users.interfaces.rest.RestObjectResponse;
 import com.users.interfaces.rest.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository repository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public HttpStatus createUser(UserDTO dto) {
@@ -35,7 +39,7 @@ public class UserServiceImpl implements UserService {
         user.setLastName(dto.getLastName());
         user.setUserName(dto.getUserName());
         user.setEmail(dto.getEmail());
-        user.setPassword(dto.getPassword());
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setLocation(dto.getLocation());
         Location location = dto.getLocation();
         location.setUser(user);
@@ -79,8 +83,4 @@ public class UserServiceImpl implements UserService {
         return new RestResponse(HttpStatus.OK, "User deleted succefully.");
     }
 
-    @Override
-    public String encodePassword(String pass) {
-        return null;
-    }
 }

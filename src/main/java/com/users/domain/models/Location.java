@@ -1,4 +1,4 @@
-package com.users.domain.entities;
+package com.users.domain.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;

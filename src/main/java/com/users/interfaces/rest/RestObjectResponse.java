@@ -12,7 +12,4 @@ public class RestObjectResponse<T> extends RestResponse{
         super(statusCode, message);
     }
 
-    public RestObjectResponse(){
-        super();
-    }
 }
